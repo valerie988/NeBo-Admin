@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { authApi } from "../services/api";
+import api, { authApi } from "../services/api";
 
 interface Admin { id: string; full_name: string; email: string; role: string; }
 
@@ -18,15 +18,15 @@ export const useAdminStore = create<AuthState>()(
       token: null,
 
       login: async (email, password) => {
-        const { data } = await authApi.login(email, password);
-        if (data.role !== "admin") throw new Error("Not an admin account");
-        localStorage.setItem("admin_token", data.access_token);
-        set({ token: data.access_token });
-        // Load profile
-        const { default: api } = await import("../services/api");
-        const me = await api.get("/api/users/me");
-        set({ admin: me.data });
-      },
+  const { data } = await authApi.login(email, password);
+  if (data.role !== "admin") throw new Error("Not an admin account");
+
+  localStorage.setItem("admin_token", data.access_token);
+  set({ token: data.access_token });
+
+  const me = await api.get("/api/auth/me");
+  set({ admin: me.data });
+},
 
       logout: () => {
         localStorage.removeItem("admin_token");

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Shield, Eye, EyeOff } from "lucide-react";
 import { useAdminStore } from "../store/authStore";
 import toast from "react-hot-toast";
+import logo from "@/assets/images/logo.png";
 
 export default function LoginPage() {
   const navigate    = useNavigate();
@@ -33,9 +34,11 @@ export default function LoginPage() {
       <div className="w-full max-w-sm">
         {/* Logo */}
         <div className="flex flex-col items-center gap-3 mb-8">
-          <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-xl">
-            <Shield size={32} className="text-brand-700" />
-          </div>
+          <img
+                      src={logo}
+                      alt="NeBo Logo"
+                      className="w-full h-16 object-contain"
+                    />
           <div className="text-center text-white">
             <p className="text-2xl font-black">NeBo Admin</p>
             <p className="text-brand-300 text-sm mt-0.5">Management Dashboard</p>

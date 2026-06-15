@@ -1,15 +1,18 @@
 import { useState } from "react";
-import { Bell, Users, User, ShoppingBasket, Send } from "lucide-react";
+import { 
+  Bell, Users, User, ShoppingBasket, Send, Sprout, 
+  ShoppingBag, UserCircle, PartyPopper 
+} from "lucide-react";
 import { adminApi } from "../services/api";
 import { PageHeader, Btn } from "../components/ui";
 import toast from "react-hot-toast";
 
 const TEMPLATES = [
-  { title: "Welcome to NeBo!",        body: "Discover fresh produce from local farmers near you. Start exploring today! 🌿",                    emoji: "🌿" },
-  { title: "New products available",  body: "Fresh produce just listed in your area. Check out the latest listings now.",                       emoji: "🛒" },
-  { title: "Complete your profile",   body: "Add your location and photo to get personalised recommendations.",                                 emoji: "👤" },
-  { title: "Farmers: List your crops",body: "Reach hundreds of customers in your area. Add your first product listing today!",                  emoji: "🌱" },
-  { title: "Weekend market special",  body: "Fresh picks from local farms available this weekend. Order now for delivery!",                     emoji: "🎉" },
+  { title: "Welcome to NeBo!",        body: "Discover fresh produce from local farmers near you. Start exploring today! ",                    icon: Sprout,       iconColor: "text-green-600" },
+  { title: "New products available",  body: "Fresh produce just listed in your area. Check out the latest listings now.",                       icon: ShoppingBag,  iconColor: "text-brand-600" },
+  { title: "Complete your profile",   body: "Add your location and photo to get personalised recommendations.",                                 icon: UserCircle,   iconColor: "text-blue-500" },
+  { title: "Farmers: List your crops",body: "Reach hundreds of customers in your area. Add your first product listing today!",                  icon: Sprout,     iconColor: "text-emerald-600" },
+  { title: "Weekend market special",  body: "Fresh picks from local farms available this weekend. Order now for delivery!",                     icon: PartyPopper,  iconColor: "text-amber-500" },
 ];
 
 export default function NotificationsPage() {
@@ -154,18 +157,21 @@ export default function NotificationsPage() {
           <div className="bg-white rounded-2xl p-5 shadow-sm border border-brand-100">
             <h3 className="font-bold text-brand-900 mb-3 text-sm">Quick Templates</h3>
             <div className="space-y-2">
-              {TEMPLATES.map((t, i) => (
-                <button key={i} onClick={() => applyTemplate(t)}
-                  className="w-full text-left p-3 rounded-xl hover:bg-brand-50 transition-colors border border-transparent hover:border-brand-100">
-                  <div className="flex items-start gap-2">
-                    <span className="text-lg flex-shrink-0">{t.emoji}</span>
-                    <div>
-                      <p className="text-xs font-bold text-brand-900">{t.title}</p>
-                      <p className="text-[10px] text-gray-400 mt-0.5 line-clamp-2">{t.body}</p>
+              {TEMPLATES.map((t, i) => {
+                const TemplateIcon = t.icon;
+                return (
+                  <button key={i} onClick={() => applyTemplate(t)}
+                    className="w-full text-left p-3 rounded-xl hover:bg-brand-50 transition-colors border border-transparent hover:border-brand-100">
+                    <div className="flex items-start gap-3">
+                      <TemplateIcon size={18} className={`${t.iconColor} flex-shrink-0 mt-0.5`} />
+                      <div>
+                        <p className="text-xs font-bold text-brand-900">{t.title}</p>
+                        <p className="text-[10px] text-gray-400 mt-0.5 line-clamp-2">{t.body}</p>
+                      </div>
                     </div>
-                  </div>
-                </button>
-              ))}
+                  </button>
+                );
+              })}
             </div>
           </div>
 

@@ -6,6 +6,7 @@ import {
 import { useState } from "react";
 import { useAdminStore } from "../../store/authStore";
 import clsx from "clsx";
+import logoImg from "../../assets/images/logo.png";
 
 const nav = [
   { to: "/",             icon: LayoutDashboard, label: "Dashboard"     },
@@ -27,8 +28,12 @@ function SidebarContent({ onNav }: { onNav?: () => void }) {
     <div className="flex flex-col h-full">
       {/* Logo */}
       <div className="flex items-center gap-3 px-4 py-5 mb-2">
-        <div className="w-9 h-9 bg-brand-400 rounded-xl flex items-center justify-center">
-          <Sprout size={20} className="text-brand-900" />
+        <div className="w-11 h-11 bg-white rounded-xl flex items-center justify-center">
+         <img
+            src={logoImg}
+            alt="NeBo Logo"
+            className="w-full h-full object-contain"
+          />
         </div>
         <div>
           <p className="font-black text-white text-base leading-tight">NeBo</p>

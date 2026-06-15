@@ -19,7 +19,7 @@ function ProductRow({ product, onAction }: { product: any; onAction: (a: string,
           <div className="w-12 h-12 rounded-xl overflow-hidden bg-brand-50 flex-shrink-0">
             {product.image
               ? <img src={product.image} alt={product.name} className="w-full h-full object-cover"/>
-              : <div className="w-full h-full flex items-center justify-center text-xl">🌿</div>
+              : <div className="w-full h-full flex items-center justify-center text-xl">!</div>
             }
           </div>
           <div>

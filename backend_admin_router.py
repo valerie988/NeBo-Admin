@@ -1,22 +1,3 @@
-"""
-admin_router.py
-─────────────────────────────────────────────────────────────────────────────
-All admin endpoints. Protected by require_admin dependency.
-
-Add to your User model:
-  role       = Column(String(20))   # "farmer" | "customer" | "admin"
-  is_banned  = Column(Boolean, default=False)
-  badges     = Column(JSON, default=list)
-  push_token = Column(String(500), nullable=True)
-
-Add to your Product model:
-  is_flagged    = Column(Boolean, default=False)
-  flag_reason   = Column(String(500), nullable=True)
-
-Add to main.py:
-  from app.routers.admin_router import admin_router
-  app.include_router(admin_router, prefix="/api")
-"""
 
 from typing import List, Optional
 from datetime import datetime, timedelta

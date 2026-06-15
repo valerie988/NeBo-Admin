@@ -3,7 +3,10 @@ import {
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip,
   ResponsiveContainer, BarChart, Bar, PieChart, Pie, Cell, Legend,
 } from "recharts";
-import { Users, ShoppingBasket, ClipboardList, TrendingUp, UserCheck, AlertCircle } from "lucide-react";
+import { 
+  Users, ShoppingBasket, ClipboardList, TrendingUp, UserCheck, 
+  AlertCircle, ShieldCheck, Flag, Megaphone, BarChart3 
+} from "lucide-react";
 import { adminApi } from "../services/api";
 import { StatCard, Skeleton } from "../components/ui";
 import { format } from "date-fns";
@@ -167,15 +170,15 @@ export default function DashboardPage() {
           <h3 className="font-bold text-brand-900 mb-4">Quick Actions</h3>
           <div className="grid grid-cols-2 gap-3">
             {[
-              {label:"Verify Farmers",   href:"/users?filter=pending",  icon:"✅", color:"bg-green-50 border-green-200 text-green-700"},
-              {label:"Review Products",  href:"/products?filter=flagged",icon:"🚩", color:"bg-red-50 border-red-200 text-red-600"},
-              {label:"Send Notification",href:"/notifications",          icon:"📣", color:"bg-blue-50 border-blue-200 text-blue-600"},
-              {label:"View Analytics",   href:"/analytics",              icon:"📊", color:"bg-purple-50 border-purple-200 text-purple-600"},
-            ].map(({label,href,icon,color})=>(
+              {label:"Verify Farmers",   href:"/users?filter=pending",  icon: ShieldCheck, iconColor: "text-green-700",   color:"bg-green-50 border-green-200"},
+              {label:"Review Products",  href:"/products?filter=flagged",icon: Flag,        iconColor: "text-red-600",     color:"bg-red-50 border-red-200"},
+              {label:"Send Notification",href:"/notifications",          icon: Megaphone,   iconColor: "text-blue-600",    color:"bg-blue-50 border-blue-200"},
+              {label:"View Analytics",   href:"/analytics",              icon: BarChart3,   iconColor: "text-purple-600",  color:"bg-purple-50 border-purple-200"},
+            ].map(({label, href, icon: Icon, iconColor, color})=>(
               <a key={label} href={href}
                 className={`flex flex-col items-center gap-2 p-4 rounded-xl border ${color} hover:opacity-80 transition-opacity`}>
-                <span className="text-2xl">{icon}</span>
-                <span className="text-xs font-semibold text-center">{label}</span>
+                <Icon size={24} className={iconColor} />
+                <span className="text-xs font-semibold text-center mt-1">{label}</span>
               </a>
             ))}
           </div>

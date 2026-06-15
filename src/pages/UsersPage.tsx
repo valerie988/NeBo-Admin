@@ -7,14 +7,14 @@ import {
   Btn, Modal, Avatar, Empty, Skeleton,
 } from "../components/ui";
 import toast from "react-hot-toast";
-import { format } from "date-fns";
+import { format } from "date-fns";  
 
 const BADGES = [
-  { key: "top_seller",   label: "🏆 Top Seller",   color: "amber"  },
-  { key: "verified_farm",label: "🌿 Verified Farm", color: "green"  },
-  { key: "organic",      label: "🍃 Organic",       color: "green"  },
-  { key: "fast_delivery",label: "⚡ Fast Delivery",  color: "blue"   },
-  { key: "trusted",      label: "💎 Trusted",       color: "purple" },
+  { key: "top_seller",   label: "Top Seller",   color: "amber"  },
+  { key: "verified_farm",label: "Verified Farm", color: "green"  },
+  { key: "organic",      label: "Organic",       color: "green"  },
+  { key: "fast_delivery",label: "Fast Delivery",  color: "blue"   },
+  { key: "trusted",      label: "Trusted",       color: "purple" },
 ];
 
 function UserRow({ user, onAction }: { user: any; onAction: (action: string, u: any) => void }) {
@@ -33,7 +33,7 @@ function UserRow({ user, onAction }: { user: any; onAction: (action: string, u: 
           </div>
         </div>
       </Td>
-      <Td><Badge color={roleBadge}>{user.role === "farmer" ? "🌱 Farmer" : "🛍️ Customer"}</Badge></Td>
+      <Td><Badge color={roleBadge}>{user.role === "farmer" ? "Farmer" : "Customer"}</Badge></Td>
       <Td><Badge color={statusColor}>{statusLabel}</Badge></Td>
       <Td>
         <div className="flex flex-wrap gap-1">

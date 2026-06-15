@@ -24,7 +24,7 @@ api.interceptors.response.use(
 // ── Auth ──────────────────────────────────────────────────────────────────────
 export const authApi = {
   login: (email: string, password: string) =>
-    api.post("/api/auth/login", { email, password, role: "admin" }),
+    api.post("/api/auth/login", { identity: email, password }),
 };
 
 // ── Admin endpoints ───────────────────────────────────────────────────────────
